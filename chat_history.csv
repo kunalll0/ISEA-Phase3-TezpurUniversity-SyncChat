@@ -1,0 +1,307 @@
+Timestamp,Type,Sender,Receiver,Message
+2026-07-03 16:08:28,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-03 16:08:51,SYSTEM,SERVER,ALL,deepak joined the chat
+2026-07-03 16:09:28,BROADCAST,deepak,ALL,hello bhai
+2026-07-03 16:09:40,PRIVATE,kunal,deepak,ky hal hai
+2026-07-03 16:10:26,BROADCAST,kunal,ALL,exit
+2026-07-03 16:10:34,BROADCAST,kunal,ALL,cd ..
+2026-07-03 16:30:32,SYSTEM,SERVER,ALL,lass joined the chat
+2026-07-03 16:30:43,SYSTEM,SERVER,ALL,cscwc joined the chat
+2026-07-03 16:32:54,SYSTEM,SERVER,ALL,kcsdw joined the chat
+2026-07-03 17:16:11,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-03 17:16:51,BROADCAST,kunal,ALL,list
+2026-07-03 17:19:06,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-03 17:22:28,SYSTEM,SERVER,ALL,utkarsh joined the chat
+2026-07-03 17:22:56,SYSTEM,SERVER,ALL,deepak joined the chat
+2026-07-03 17:23:05,BROADCAST,kunal,ALL,hello guys
+2026-07-03 17:23:28,BROADCAST,utkarsh,ALL,msg/ kunal ky hal hai bhai?
+2026-07-03 17:24:03,BROADCAST,utkarsh,ALL,clear
+2026-07-03 17:24:59,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-03 17:25:11,SYSTEM,SERVER,ALL,deepak joined the chat
+2026-07-03 17:25:24,SYSTEM,SERVER,ALL,karan joined the chat
+2026-07-03 17:25:57,BROADCAST,deepak,ALL,hello guys
+2026-07-03 17:26:12,PRIVATE,karan,deepak,ky hai bhai?
+2026-07-03 17:26:45,PRIVATE,kunal,deepak,hello deepak
+2026-07-03 17:27:26,SYSTEM,SERVER,ALL,utkarsh joined the chat
+2026-07-03 17:27:34,BROADCAST,utkarsh,ALL,hello bhailog
+2026-07-03 19:18:07,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-03 19:18:22,SYSTEM,SERVER,ALL,utkarsh joined the chat
+2026-07-03 19:18:35,SYSTEM,SERVER,ALL,deepak joined the chat
+2026-07-03 19:18:49,BROADCAST,deepak,ALL,hi everyone
+2026-07-03 19:19:03,PRIVATE,kunal,deepak,hi deepak
+2026-07-03 19:19:16,PRIVATE,utkarsh,deepak,hlo deepakbhai
+2026-07-03 19:19:41,BROADCAST,utkarsh,ALL,hi everyone
+2026-07-03 19:20:08,SYSTEM,SERVER,ALL,karan joined the chat
+2026-07-03 19:20:21,BROADCAST,karan,ALL,hlo bhailog
+2026-07-03 20:21:06,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-03 20:21:23,SYSTEM,SERVER,ALL,utkarsh joined the chat
+2026-07-03 20:21:47,SYSTEM,SERVER,ALL,deepak joined the chat
+2026-07-03 20:22:08,SYSTEM,SERVER,ALL,karan joined the chat
+2026-07-03 20:22:28,BROADCAST,kunal,ALL,hello everyone
+2026-07-03 20:22:42,BROADCAST,utkarsh,ALL,good moning
+2026-07-03 20:23:06,PRIVATE,kunal,deepak,hello deepak
+2026-07-03 20:23:19,PRIVATE,utkarsh,kunal,hi kunal
+2026-07-03 20:23:56,SYSTEM,SERVER,ALL,karan left the chat
+2026-07-03 20:24:11,SYSTEM,SERVER,ALL,kunal left the chat
+2026-07-08 22:03:36,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-08 22:03:58,SYSTEM,SERVER,ALL,deepak joined the chat
+2026-07-08 22:04:06,SYSTEM,SERVER,ALL,deepak left the chat
+2026-07-08 22:04:06,SYSTEM,SERVER,ALL,deepak joined the chat
+2026-07-08 22:05:04,SYSTEM,SERVER,ALL,kunal left the chat
+2026-07-08 22:05:10,SYSTEM,SERVER,ALL,deepak left the chat
+2026-07-08 22:05:47,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-08 22:06:43,SYSTEM,SERVER,ALL,deepak joined the chat
+2026-07-08 22:12:20,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-08 22:12:46,SYSTEM,SERVER,ALL,deepak joined the chat
+2026-07-08 22:13:04,SYSTEM,SERVER,ALL,deepak left the chat
+2026-07-08 22:13:08,SYSTEM,SERVER,ALL,kunal left the chat
+2026-07-08 22:27:14,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-08 22:27:31,SYSTEM,SERVER,ALL,kunal left the chat
+2026-07-08 22:27:41,SYSTEM,SERVER,ALL,deepak joined the chat
+2026-07-08 22:31:04,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-09 15:12:45,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-09 15:13:09,SYSTEM,SERVER,ALL,deepak joined the chat
+2026-07-09 15:13:22,BROADCAST,deepak,ALL,[deepak] hii
+2026-07-09 15:13:33,BROADCAST,kunal,ALL,[kunal] hello kunal
+2026-07-09 15:13:47,BROADCAST,kunal,ALL,[kunal] /msg deepak hii
+2026-07-09 15:15:48,BROADCAST,kunal,ALL,[kunal] /list
+2026-07-09 15:33:01,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-09 15:33:17,SYSTEM,SERVER,ALL,deepak joined the chat
+2026-07-09 15:33:27,BROADCAST,deepak,ALL,[deepak] hii
+2026-07-09 15:33:42,SYSTEM,SERVER,ALL,utkarsh joined the chat
+2026-07-09 15:33:55,PRIVATE,utkarsh,kunal,hi
+2026-07-09 15:45:25,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-09 15:45:45,SYSTEM,SERVER,ALL,DEEPAK joined the chat
+2026-07-09 15:48:27,BROADCAST,DEEPAK,ALL,[DEEPAK] hii deepak
+2026-07-09 15:48:40,SYSTEM,SERVER,ALL,Utkarsh joined the chat
+2026-07-09 15:49:23,PRIVATE,kunal,Utkarsh,hi
+2026-07-09 15:49:35,PRIVATE,DEEPAK,kunal,hii kunal
+2026-07-09 15:49:43,BROADCAST,Utkarsh,ALL,[Utkarsh] hi everyone
+2026-07-09 15:50:18,BROADCAST,DEEPAK,ALL,[DEEPAK] .help
+2026-07-09 16:29:24,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-09 16:29:33,SYSTEM,SERVER,ALL,deepak joined the chat
+2026-07-09 16:29:59,SYSTEM,SERVER,ALL,utkarsh joined the chat
+2026-07-09 16:30:09,BROADCAST,kunal,ALL,[kunal] hii everyonw
+2026-07-09 16:30:15,SYSTEM,SERVER,ALL,kunal left the chat
+2026-07-09 16:30:28,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-09 16:30:46,PRIVATE,kunal,deepak,hi
+2026-07-09 16:30:55,BROADCAST,utkarsh,ALL,[utkarsh] hloooo
+2026-07-09 16:38:16,BROADCAST,deepak,ALL,[deepak] hi
+2026-07-09 16:38:44,SYSTEM,SERVER,ALL,kunl joined the chat
+2026-07-09 16:38:49,BROADCAST,kunl,ALL,hi
+2026-07-09 16:38:59,SYSTEM,SERVER,ALL,kunaal joined the chat
+2026-07-09 16:39:22,PRIVATE,kunaal,kunl,hi
+2026-07-09 16:39:42,BROADCAST,kunaal,ALL,kunaaal
+2026-07-09 17:44:29,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-09 17:44:36,BROADCAST,kunal,ALL,hi
+2026-07-09 17:44:50,SYSTEM,SERVER,ALL,deepak joined the chat
+2026-07-09 17:45:10,BROADCAST,deepak,ALL,hii everyone
+2026-07-09 17:45:18,PRIVATE,deepak,kunal,hi
+2026-07-09 17:45:45,SYSTEM,SERVER,ALL,utkarsh joined the chat
+2026-07-09 17:45:53,BROADCAST,utkarsh,ALL,heelo everyone
+2026-07-09 17:46:03,PRIVATE,deepak,utkarsh,hi
+2026-07-09 17:57:44,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-09 17:58:04,SYSTEM,SERVER,ALL,deepak joined the chat
+2026-07-09 17:58:28,PRIVATE,deepak,kunal,hi
+2026-07-09 17:59:06,SYSTEM,SERVER,ALL,karan joined the chat
+2026-07-09 17:59:11,BROADCAST,karan,ALL,hii
+2026-07-09 17:59:30,PRIVATE,karan,deepak,hello
+2026-07-09 18:18:11,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-09 18:18:25,BROADCAST,kunal,ALL,hii
+2026-07-09 18:18:37,BROADCAST,kunal,ALL,ss
+2026-07-09 18:18:39,BROADCAST,kunal,ALL,Enter your message...sjsjs
+2026-07-09 18:18:42,BROADCAST,kunal,ALL,Enter your message...ss
+2026-07-09 18:18:43,BROADCAST,kunal,ALL,Enter your message...sss
+2026-07-09 18:33:52,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-09 18:34:18,SYSTEM,SERVER,ALL,deepak joined the chat
+2026-07-09 18:34:26,BROADCAST,deepak,ALL,Type your message here...kunal
+2026-07-09 18:34:29,BROADCAST,deepak,ALL,Enter your message...jshs
+2026-07-09 18:45:48,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-09 18:45:52,BROADCAST,kunal,ALL,hi
+2026-07-09 18:45:55,BROADCAST,kunal,ALL,Enter your message...shshs
+2026-07-09 18:49:22,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-09 18:49:26,BROADCAST,kunal,ALL,hi
+2026-07-09 18:49:33,BROADCAST,kunal,ALL,hi
+2026-07-09 18:49:37,BROADCAST,kunal,ALL,Enter your message...hi
+2026-07-09 18:49:41,BROADCAST,kunal,ALL,hi
+2026-07-09 18:56:52,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-09 18:56:56,BROADCAST,kunal,ALL,kunal
+2026-07-09 18:57:02,BROADCAST,kunal,ALL,hi
+2026-07-09 18:57:05,BROADCAST,kunal,ALL,deepak
+2026-07-09 18:57:11,BROADCAST,kunal,ALL,how are you
+2026-07-09 19:03:55,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-09 19:04:02,BROADCAST,kunal,ALL,Enter your message...hiiiiiii
+2026-07-09 19:04:05,BROADCAST,kunal,ALL,Enter your message...nuubuuu
+2026-07-09 19:09:26,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-09 19:09:30,BROADCAST,kunal,ALL,hi
+2026-07-09 19:09:34,BROADCAST,kunal,ALL,hi
+2026-07-09 19:09:38,BROADCAST,kunal,ALL,kunal
+2026-07-09 19:09:47,BROADCAST,kunal,ALL,ddd
+2026-07-09 19:09:48,BROADCAST,kunal,ALL,Enter your message...d
+2026-07-09 19:09:49,BROADCAST,kunal,ALL,Enter your message...ddddddd
+2026-07-09 19:25:46,SYSTEM,SERVER,ALL,kunal left the chat
+2026-07-09 19:26:09,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-09 19:26:13,BROADCAST,kunal,ALL,kunak
+2026-07-09 19:26:15,BROADCAST,kunal,ALL,jhs
+2026-07-09 19:26:20,BROADCAST,kunal,ALL,kunal
+2026-07-09 19:26:24,BROADCAST,kunal,ALL,kunaaalllakjshshdhdhd
+2026-07-09 19:26:36,SYSTEM,SERVER,ALL,deepak joined the chat
+2026-07-09 19:26:46,PRIVATE,deepak,kunal,hi
+2026-07-09 19:42:13,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-09 19:42:22,BROADCAST,kunal,ALL,hii
+2026-07-09 19:42:32,BROADCAST,kunal,ALL,hii
+2026-07-09 19:57:47,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-09 19:57:59,BROADCAST,kunal,ALL,hii
+2026-07-09 19:58:07,BROADCAST,kunal,ALL,ssss
+2026-07-09 19:58:08,BROADCAST,kunal,ALL,sss
+2026-07-09 19:58:09,BROADCAST,kunal,ALL,s
+2026-07-09 19:58:09,BROADCAST,kunal,ALL,s
+2026-07-09 19:58:09,BROADCAST,kunal,ALL,ss
+2026-07-09 19:58:10,BROADCAST,kunal,ALL,ss
+2026-07-09 19:58:10,BROADCAST,kunal,ALL,ss
+2026-07-09 19:58:10,BROADCAST,kunal,ALL,ss
+2026-07-09 19:58:11,BROADCAST,kunal,ALL,ss
+2026-07-09 19:58:11,BROADCAST,kunal,ALL,ss
+2026-07-09 19:58:11,BROADCAST,kunal,ALL,ss
+2026-07-09 19:58:12,BROADCAST,kunal,ALL,ss
+2026-07-09 19:58:12,BROADCAST,kunal,ALL,ss
+2026-07-09 19:58:12,BROADCAST,kunal,ALL,ss
+2026-07-09 19:58:13,BROADCAST,kunal,ALL,ss
+2026-07-09 19:58:13,BROADCAST,kunal,ALL,s
+2026-07-09 19:58:13,BROADCAST,kunal,ALL,ss
+2026-07-09 19:58:14,BROADCAST,kunal,ALL,s
+2026-07-09 19:58:14,BROADCAST,kunal,ALL,ss
+2026-07-09 19:58:14,BROADCAST,kunal,ALL,ss
+2026-07-09 19:58:15,BROADCAST,kunal,ALL,s
+2026-07-09 19:58:15,BROADCAST,kunal,ALL,s
+2026-07-09 19:58:20,SYSTEM,SERVER,ALL,kunal left the chat
+2026-07-09 21:16:03,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-09 21:16:24,SYSTEM,SERVER,ALL,deepak joined the chat
+2026-07-09 21:17:13,SYSTEM,SERVER,ALL,karan joined the chat
+2026-07-09 21:17:31,BROADCAST,karan,ALL,heyy everyone
+2026-07-09 21:17:51,PRIVATE,kunal,karan,hey...how are you?
+2026-07-09 21:18:11,BROADCAST,deepak,ALL,hi karan...how are you doing?
+2026-07-09 21:18:23,BROADCAST,kunal,ALL,good morning /list
+2026-07-09 21:18:50,BROADCAST,deepak,ALL,hii
+2026-07-09 21:18:55,BROADCAST,deepak,ALL,hii
+2026-07-09 21:20:21,BROADCAST,karan,ALL,do we have more assignments?
+2026-07-09 21:41:08,SYSTEM,SERVER,ALL,utkarsh joined the chat
+2026-07-09 21:41:17,BROADCAST,utkarsh,ALL,hy guys
+2026-07-09 21:41:27,BROADCAST,utkarsh,ALL,bye guys
+2026-07-09 21:41:30,SYSTEM,SERVER,ALL,utkarsh left the chat
+2026-07-09 21:59:27,SYSTEM,SERVER,ALL,karan left the chat
+2026-07-09 22:16:36,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-09 22:16:45,SYSTEM,SERVER,ALL,deepak joined the chat
+2026-07-09 22:17:34,BROADCAST,deepak,ALL,hiii
+2026-07-09 22:18:00,BROADCAST,kunal,ALL,hii
+2026-07-09 22:26:40,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-09 22:26:53,SYSTEM,SERVER,ALL,deepak joined the chat
+2026-07-09 22:28:09,BROADCAST,deepak,ALL,hii
+2026-07-09 22:28:21,PRIVATE,kunal,kunal,ky hal hai?
+2026-07-09 22:28:36,PRIVATE,kunal,deepak,ky hal hai
+2026-07-09 22:28:46,SYSTEM,SERVER,ALL,kunal left the chat
+2026-07-09 22:34:38,SYSTEM,SERVER,ALL,deepak left the chat
+2026-07-10 00:56:18,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-10 00:56:33,SYSTEM,SERVER,ALL,deepak joined the chat
+2026-07-10 00:56:53,SYSTEM,SERVER,ALL,karan joined the chat
+2026-07-10 00:57:06,BROADCAST,karan,ALL,heyyy
+2026-07-10 00:57:23,PRIVATE,deepak,karan,hello
+2026-07-10 00:57:34,BROADCAST,kunal,ALL,hey everyone
+2026-07-10 01:32:49,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-10 16:38:56,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-10 17:21:41,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-10 18:20:33,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-10 18:20:56,SYSTEM,SERVER,ALL,kunal left the chat
+2026-07-10 18:21:07,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-10 19:04:48,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-10 19:07:55,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-10 19:08:54,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-10 19:09:15,SYSTEM,SERVER,ALL,deepak joined the chat
+2026-07-10 19:18:43,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-10 19:19:12,BROADCAST,kunal,ALL,hi
+2026-07-10 19:19:20,BROADCAST,kunal,ALL,sdddd
+2026-07-10 19:19:21,BROADCAST,kunal,ALL,ssss
+2026-07-10 19:19:21,BROADCAST,kunal,ALL,sdd
+2026-07-10 19:19:22,BROADCAST,kunal,ALL,ff
+2026-07-10 19:19:22,BROADCAST,kunal,ALL,ff
+2026-07-10 19:19:22,BROADCAST,kunal,ALL,f
+2026-07-10 19:19:41,SYSTEM,SERVER,ALL,deepak joined the chat
+2026-07-10 19:24:50,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-10 19:40:02,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-10 19:46:00,SYSTEM,SERVER,ALL,kunk joined the chat
+2026-07-10 19:47:13,SYSTEM,SERVER,ALL,kunk left the chat
+2026-07-10 19:47:27,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-10 19:47:39,BROADCAST,kunal,ALL,heey
+2026-07-10 19:47:51,SYSTEM,SERVER,ALL,deepak joined the chat
+2026-07-10 19:50:05,PRIVATE,deepak,kunal,hi
+2026-07-10 19:50:16,PRIVATE,kunal,deepak,how are you
+2026-07-10 19:50:42,BROADCAST,deepak,ALL,hey everyone
+2026-07-10 19:52:25,PRIVATE,deepak,kunal,hello
+2026-07-10 19:53:24,PRIVATE,deepak,kunal,hi
+2026-07-10 19:53:45,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-10 19:53:54,SYSTEM,SERVER,ALL,deepak joined the chat
+2026-07-10 19:54:32,PRIVATE,kunal,deepak,hi
+2026-07-10 19:54:55,BROADCAST,deepak,ALL,hey everyone
+2026-07-10 19:55:05,BROADCAST,deepak,ALL,how are you doing?
+2026-07-10 19:55:35,BROADCAST,deepak,ALL,hello
+2026-07-10 19:55:40,BROADCAST,kunal,ALL,hiii
+2026-07-10 19:55:46,BROADCAST,kunal,ALL,hello
+2026-07-10 19:55:52,BROADCAST,kunal,ALL,hello
+2026-07-10 19:56:01,SYSTEM,SERVER,ALL,kunal left the chat
+2026-07-10 20:07:24,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-10 20:38:12,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-10 20:39:28,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-10 20:39:32,BROADCAST,kunal,ALL,hii
+2026-07-10 20:39:39,BROADCAST,kunal,ALL,hello
+2026-07-10 20:39:44,BROADCAST,kunal,ALL,hello
+2026-07-10 20:40:02,SYSTEM,SERVER,ALL,deepak joined the chat
+2026-07-10 20:40:25,PRIVATE,kunal,deepak,hi
+2026-07-10 20:40:44,BROADCAST,deepak,ALL,heyy deepak
+2026-07-10 20:42:06,PRIVATE,kunal,deepak,hi
+2026-07-10 20:42:08,SYSTEM,SERVER,ALL,kunal left the chat
+2026-07-10 20:42:47,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-10 20:42:53,BROADCAST,kunal,ALL,heyyy
+2026-07-10 20:43:03,BROADCAST,kunal,ALL,hello
+2026-07-10 20:43:20,BROADCAST,kunal,ALL,Type a message...
+2026-07-10 20:43:45,SYSTEM,SERVER,ALL,kunal left the chat
+2026-07-10 20:43:55,SYSTEM,SERVER,ALL,Deepak joined the chat
+2026-07-10 20:44:07,SYSTEM,SERVER,ALL,Kunal joined the chat
+2026-07-10 20:44:18,BROADCAST,Kunal,ALL,hey everyone
+2026-07-10 20:44:39,PRIVATE,Deepak,Kunal,hii kunal
+2026-07-10 20:45:13,PRIVATE,Kunal,Deepak,hi deepaak how are you
+2026-07-10 20:45:39,BROADCAST,Deepak,ALL,good morning guys
+2026-07-10 21:02:40,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-10 21:02:57,SYSTEM,SERVER,ALL,Deepak joined the chat
+2026-07-10 21:03:05,PRIVATE,Deepak,kunal,hi
+2026-07-10 21:03:27,PRIVATE,kunal,Deepak,hi deepak
+2026-07-10 21:03:33,BROADCAST,kunal,ALL,hey everyone
+2026-07-10 21:03:55,BROADCAST,kunal,ALL,I need to go guys...bye
+2026-07-10 21:03:57,SYSTEM,SERVER,ALL,kunal left the chat
+2026-07-10 21:39:12,SYSTEM,SERVER,ALL,Kunal joined the chat
+2026-07-10 21:40:07,SYSTEM,SERVER,ALL,Deepak joined the chat
+2026-07-10 21:40:28,SYSTEM,SERVER,ALL,Utkarsh joined the chat
+2026-07-10 21:40:54,SYSTEM,SERVER,ALL,Karan joined the chat
+2026-07-10 21:41:54,BROADCAST,Deepak,ALL,hello
+2026-07-10 21:42:14,BROADCAST,Utkarsh,ALL,HI everyone
+2026-07-10 21:42:27,BROADCAST,Karan,ALL,Hlo guys
+2026-07-10 21:42:44,BROADCAST,Kunal,ALL,hello Bro
+2026-07-10 21:43:25,PRIVATE,Kunal,Deepak,How are you?
+2026-07-10 21:43:47,PRIVATE,Deepak,Kunal,I am good WBY?
+2026-07-10 21:44:44,BROADCAST,Deepak,ALL,Okay Guys I need to go.....Byeeeee
+2026-07-10 21:44:46,SYSTEM,SERVER,ALL,Deepak left the chat
+2026-07-10 21:45:03,SYSTEM,SERVER,ALL,Utkarsh left the chat
+2026-07-10 21:46:18,SYSTEM,SERVER,ALL,Deepak joined the chat
+2026-07-10 21:46:49,SYSTEM,SERVER,ALL,Utkarsh joined the chat
+2026-07-10 21:57:00,SYSTEM,SERVER,ALL,kunal joined the chat
+2026-07-10 21:57:07,BROADCAST,kunal,ALL,heyy
+2026-07-10 21:57:39,SYSTEM,SERVER,ALL,deepak joined the chat
+2026-07-10 21:58:05,PRIVATE,deepak,kunal,hi
+2026-07-10 21:58:27,PRIVATE,deepak,kunal,hi
+2026-07-10 21:59:39,SYSTEM,SERVER,ALL,Karan joined the chat
+2026-07-10 22:01:36,BROADCAST,kunal,ALL,hey everyone
+2026-07-10 22:01:45,BROADCAST,deepak,ALL,helloooooo
+2026-07-10 22:02:30,PRIVATE,deepak,kunal,hello
+2026-07-10 22:03:18,PRIVATE,kunal,deepak,hello ji
+2026-07-10 22:04:09,SYSTEM,SERVER,ALL,Karan left the chat
+2026-07-10 22:04:14,SYSTEM,SERVER,ALL,kunal left the chat
+2026-07-10 22:04:20,SYSTEM,SERVER,ALL,deepak left the chat
