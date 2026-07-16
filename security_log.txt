@@ -1,0 +1,623 @@
+============================================================
+SYNCCHAT SECURITY LOG
+============================================================
+
+Time      : 2026-07-16 02:12:33
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : kunal_408
+IP        : 10.0.0.3
+------------------------------------------------------------
+Time      : 2026-07-16 02:12:49
+Source    : CLIENT
+Event     : SESSION TIMEOUT
+Username  : kunal_408
+Details   : Logged out due to inactivity
+============================================================
+
+Time      : 2026-07-16 02:12:53
+Source    : SERVER
+Event     : LOGOUT
+Username  : kunal_408
+IP        : 10.0.0.3
+------------------------------------------------------------
+Time      : 2026-07-16 02:13:12
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : karan_90
+IP        : 10.0.0.2
+------------------------------------------------------------
+Time      : 2026-07-16 02:13:19
+Source    : SERVER
+Event     : LOGOUT
+Username  : karan_90
+IP        : 10.0.0.2
+------------------------------------------------------------
+Time      : 2026-07-16 02:20:06
+Source    : CLIENT
+Event     : ACCOUNT CREATED
+Username  : deepak_09
+============================================================
+
+Time      : 2026-07-16 02:20:25
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : deepak_09
+IP        : 10.0.0.3
+------------------------------------------------------------
+
+Time      : 2026-07-16 02:20:49
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : karan_90
+IP        : 10.0.0.2
+------------------------------------------------------------
+
+Time      : 2026-07-16 02:21:37
+Source    : SERVER
+Event     : LOGOUT
+Username  : deepak_09
+IP        : 10.0.0.3
+------------------------------------------------------------
+
+Time      : 2026-07-16 02:21:44
+Source    : SERVER
+Event     : LOGOUT
+Username  : karan_90
+IP        : 10.0.0.2
+------------------------------------------------------------
+
+Time      : 2026-07-16 13:35:20
+Source    : CLIENT
+Event     : ACCOUNT CREATED
+Username  : kunal_408
+============================================================
+Time      : 2026-07-16 13:36:03
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : kunal_408
+IP        : 10.0.0.2
+------------------------------------------------------------
+Time      : 2026-07-16 13:37:07
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : deepak_09
+IP        : 10.0.0.3
+------------------------------------------------------------
+Time      : 2026-07-16 13:37:36
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : karan_90
+IP        : 10.0.0.5
+------------------------------------------------------------
+Time      : 2026-07-16 13:38:13
+Source    : CLIENT
+Event     : ACCOUNT CREATED
+Username  : utkarsh_80
+============================================================
+Time      : 2026-07-16 13:38:47
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : utkarsh_80
+IP        : 10.0.0.4
+------------------------------------------------------------
+Time      : 2026-07-16 13:40:33
+Source    : CLIENT
+Event     : FAILED LOGIN
+Username  : vansh_70
+Details   : Invalid username or password
+============================================================
+Time      : 2026-07-16 13:41:15
+Source    : CLIENT
+Event     : ACCOUNT CREATED
+Username  : vansh_70
+============================================================
+Time      : 2026-07-16 13:41:23
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : vansh_70
+IP        : 10.0.0.6
+------------------------------------------------------------
+Time      : 2026-07-16 13:41:34
+Source    : CLIENT
+Event     : SESSION TIMEOUT
+Username  : kunal_408
+Details   : Logged out due to inactivity
+============================================================
+Time      : 2026-07-16 13:42:03
+Source    : SERVER
+Event     : LOGOUT
+Username  : kunal_408
+IP        : 10.0.0.2
+------------------------------------------------------------
+Time      : 2026-07-16 13:42:09
+Source    : CLIENT
+Event     : SESSION TIMEOUT
+Username  : deepak_09
+Details   : Logged out due to inactivity
+============================================================
+Time      : 2026-07-16 13:42:11
+Source    : SERVER
+Event     : LOGOUT
+Username  : deepak_09
+IP        : 10.0.0.3
+------------------------------------------------------------
+Time      : 2026-07-16 13:42:17
+Source    : CLIENT
+Event     : FAILED LOGIN
+Username  : deepak_09
+Details   : Invalid username or password
+============================================================
+Time      : 2026-07-16 13:42:38
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : deepak_09
+IP        : 10.0.0.3
+------------------------------------------------------------
+Time      : 2026-07-16 13:42:39
+Source    : CLIENT
+Event     : SESSION TIMEOUT
+Username  : karan_90
+Details   : Logged out due to inactivity
+============================================================
+Time      : 2026-07-16 13:42:41
+Source    : SERVER
+Event     : LOGOUT
+Username  : karan_90
+IP        : 10.0.0.5
+------------------------------------------------------------
+Time      : 2026-07-16 13:42:45
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : karan_90
+IP        : 10.0.0.5
+------------------------------------------------------------
+Time      : 2026-07-16 13:43:52
+Source    : CLIENT
+Event     : SESSION TIMEOUT
+Username  : utkarsh_80
+Details   : Logged out due to inactivity
+============================================================
+Time      : 2026-07-16 13:43:55
+Source    : SERVER
+Event     : LOGOUT
+Username  : utkarsh_80
+IP        : 10.0.0.4
+------------------------------------------------------------
+Time      : 2026-07-16 13:44:00
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : utkarsh_80
+IP        : 10.0.0.4
+------------------------------------------------------------
+Time      : 2026-07-16 13:44:52
+Source    : CLIENT
+Event     : FAILED LOGIN
+Username  : kunal_408
+Details   : Invalid username or password
+============================================================
+Time      : 2026-07-16 13:45:02
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : kunal_408
+IP        : 10.0.0.2
+------------------------------------------------------------
+Time      : 2026-07-16 13:46:10
+Source    : SERVER
+Event     : LOGOUT
+Username  : utkarsh_80
+IP        : 10.0.0.4
+------------------------------------------------------------
+Time      : 2026-07-16 14:10:37
+Source    : CLIENT
+Event     : FAILED LOGIN
+Username  : kunal_408
+Details   : Invalid username or password
+============================================================
+Time      : 2026-07-16 14:10:52
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : kunal_408
+IP        : 10.0.0.3
+------------------------------------------------------------
+Time      : 2026-07-16 14:10:54
+Source    : SERVER
+Event     : LOGOUT
+Username  : kunal_408
+IP        : 10.0.0.3
+------------------------------------------------------------
+Time      : 2026-07-16 14:11:14
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : karan_90
+IP        : 10.0.0.2
+------------------------------------------------------------
+Time      : 2026-07-16 14:11:16
+Source    : SERVER
+Event     : LOGOUT
+Username  : karan_90
+IP        : 10.0.0.2
+------------------------------------------------------------
+Time      : 2026-07-16 14:12:16
+Source    : CLIENT
+Event     : SESSION TIMEOUT
+Username  : karan_90
+Details   : Logged out due to inactivity
+============================================================
+Time      : 2026-07-16 14:22:33
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : kunal_408
+IP        : 10.0.0.2
+------------------------------------------------------------
+Time      : 2026-07-16 14:22:52
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : karan_90
+IP        : 10.0.0.3
+------------------------------------------------------------
+Time      : 2026-07-16 14:23:59
+Source    : CLIENT
+Event     : SESSION TIMEOUT
+Username  : karan_90
+Details   : Logged out due to inactivity
+============================================================
+Time      : 2026-07-16 14:24:01
+Source    : SERVER
+Event     : LOGOUT
+Username  : karan_90
+IP        : 10.0.0.3
+------------------------------------------------------------
+Time      : 2026-07-16 14:24:19
+Source    : CLIENT
+Event     : SESSION TIMEOUT
+Username  : kunal_408
+Details   : Logged out due to inactivity
+============================================================
+Time      : 2026-07-16 14:24:44
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : karan_90
+IP        : 10.0.0.3
+------------------------------------------------------------
+Time      : 2026-07-16 14:24:57
+Source    : SERVER
+Event     : LOGOUT
+Username  : kunal_408
+IP        : 10.0.0.2
+------------------------------------------------------------
+Time      : 2026-07-16 14:25:07
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : kunal_408
+IP        : 10.0.0.2
+------------------------------------------------------------
+Time      : 2026-07-16 14:26:41
+Source    : CLIENT
+Event     : SESSION TIMEOUT
+Username  : karan_90
+Details   : Logged out due to inactivity
+============================================================
+Time      : 2026-07-16 14:26:43
+Source    : SERVER
+Event     : LOGOUT
+Username  : karan_90
+IP        : 10.0.0.3
+------------------------------------------------------------
+Time      : 2026-07-16 14:26:48
+Source    : CLIENT
+Event     : SESSION TIMEOUT
+Username  : kunal_408
+Details   : Logged out due to inactivity
+============================================================
+Time      : 2026-07-16 14:26:49
+Source    : SERVER
+Event     : LOGOUT
+Username  : kunal_408
+IP        : 10.0.0.2
+------------------------------------------------------------
+Time      : 2026-07-16 14:26:58
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : kunal_408
+IP        : 10.0.0.2
+------------------------------------------------------------
+Time      : 2026-07-16 14:27:06
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : karan_90
+IP        : 10.0.0.3
+------------------------------------------------------------
+Time      : 2026-07-16 14:28:08
+Source    : CLIENT
+Event     : SESSION TIMEOUT
+Username  : karan_90
+Details   : Logged out due to inactivity
+============================================================
+Time      : 2026-07-16 14:28:16
+Source    : SERVER
+Event     : LOGOUT
+Username  : karan_90
+IP        : 10.0.0.3
+------------------------------------------------------------
+Time      : 2026-07-16 14:28:30
+Source    : CLIENT
+Event     : SESSION TIMEOUT
+Username  : kunal_408
+Details   : Logged out due to inactivity
+============================================================
+Time      : 2026-07-16 14:28:32
+Source    : SERVER
+Event     : LOGOUT
+Username  : kunal_408
+IP        : 10.0.0.2
+------------------------------------------------------------
+Time      : 2026-07-16 14:35:56
+Source    : CLIENT
+Event     : FAILED LOGIN
+Username  : kunal_408
+Details   : Invalid username or password
+============================================================
+Time      : 2026-07-16 14:36:02
+Source    : CLIENT
+Event     : FAILED LOGIN
+Username  : kunal_408
+Details   : Invalid username or password
+============================================================
+Time      : 2026-07-16 14:36:08
+Source    : CLIENT
+Event     : FAILED LOGIN
+Username  : kunal_408
+Details   : Invalid username or password
+============================================================
+Time      : 2026-07-16 14:36:18
+Source    : CLIENT
+Event     : FAILED LOGIN
+Username  : kunal_408
+Details   : Invalid username or password
+============================================================
+Time      : 2026-07-16 14:36:24
+Source    : CLIENT
+Event     : ACCOUNT LOCKED
+Username  : kunal_408
+Details   : 5 failed login attempts
+============================================================
+Time      : 2026-07-16 14:37:22
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : kunal_408
+IP        : 10.0.0.3
+------------------------------------------------------------
+Time      : 2026-07-16 14:37:41
+Source    : SERVER
+Event     : DUPLICATE LOGIN BLOCKED
+Username  : kunal_408
+IP        : 10.0.0.2
+------------------------------------------------------------
+Time      : 2026-07-16 14:38:25
+Source    : CLIENT
+Event     : SESSION TIMEOUT
+Username  : kunal_408
+Details   : Logged out due to inactivity
+============================================================
+Time      : 2026-07-16 14:38:48
+Source    : SERVER
+Event     : LOGOUT
+Username  : kunal_408
+IP        : 10.0.0.3
+------------------------------------------------------------
+Time      : 2026-07-16 14:41:02
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : kunal_408
+IP        : 10.0.0.5
+------------------------------------------------------------
+Time      : 2026-07-16 14:41:20
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : karan_90
+IP        : 10.0.0.3
+------------------------------------------------------------
+Time      : 2026-07-16 14:41:34
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : deepak_09
+IP        : 10.0.0.6
+------------------------------------------------------------
+Time      : 2026-07-16 14:42:01
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : utkarsh_80
+IP        : 10.0.0.4
+------------------------------------------------------------
+Time      : 2026-07-16 14:42:36
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : vansh_70
+IP        : 10.0.0.2
+------------------------------------------------------------
+Time      : 2026-07-16 14:45:28
+Source    : SERVER
+Event     : LOGOUT
+Username  : kunal_408
+IP        : 10.0.0.5
+------------------------------------------------------------
+Time      : 2026-07-16 14:45:33
+Source    : SERVER
+Event     : LOGOUT
+Username  : vansh_70
+IP        : 10.0.0.2
+------------------------------------------------------------
+Time      : 2026-07-16 14:46:27
+Source    : SERVER
+Event     : LOGOUT
+Username  : karan_90
+IP        : 10.0.0.3
+------------------------------------------------------------
+Time      : 2026-07-16 14:52:58
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : kunal_408
+IP        : 10.0.0.2
+------------------------------------------------------------
+Time      : 2026-07-16 14:53:14
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : karan_90
+IP        : 10.0.0.4
+------------------------------------------------------------
+Time      : 2026-07-16 14:53:14
+Source    : SERVER
+Event     : LOGOUT
+Username  : karan_90
+IP        : 10.0.0.4
+------------------------------------------------------------
+Time      : 2026-07-16 14:53:14
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : karan_90
+IP        : 10.0.0.4
+------------------------------------------------------------
+Time      : 2026-07-16 14:53:36
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : deepak_09
+IP        : 10.0.0.3
+------------------------------------------------------------
+Time      : 2026-07-16 14:54:06
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : utkarsh_80
+IP        : 10.0.0.5
+------------------------------------------------------------
+Time      : 2026-07-16 14:54:38
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : vansh_70
+IP        : 10.0.0.6
+------------------------------------------------------------
+Time      : 2026-07-16 14:57:36
+Source    : SERVER
+Event     : LOGOUT
+Username  : deepak_09
+IP        : 10.0.0.3
+------------------------------------------------------------
+Time      : 2026-07-16 14:59:52
+Source    : CLIENT
+Event     : ACCOUNT CREATED
+Username  : deepak
+============================================================
+Time      : 2026-07-16 15:18:36
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : Kunal_408
+IP        : 10.0.0.3
+------------------------------------------------------------
+Time      : 2026-07-16 15:18:58
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : karan_90
+IP        : 10.0.0.2
+------------------------------------------------------------
+Time      : 2026-07-16 15:26:51
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : kunal_408
+IP        : 10.0.0.6
+------------------------------------------------------------
+Time      : 2026-07-16 15:27:11
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : deepak_09
+IP        : 10.0.0.3
+------------------------------------------------------------
+Time      : 2026-07-16 15:27:33
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : utkarsh_80
+IP        : 10.0.0.4
+------------------------------------------------------------
+Time      : 2026-07-16 15:28:04
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : vansh_70
+IP        : 10.0.0.2
+------------------------------------------------------------
+Time      : 2026-07-16 15:28:43
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : karan_90
+IP        : 10.0.0.5
+------------------------------------------------------------
+Time      : 2026-07-16 15:32:59
+Source    : SERVER
+Event     : LOGOUT
+Username  : deepak_09
+IP        : 10.0.0.3
+------------------------------------------------------------
+Time      : 2026-07-16 15:33:33
+Source    : SERVER
+Event     : LOGOUT
+Username  : kunal_408
+IP        : 10.0.0.6
+------------------------------------------------------------
+Time      : 2026-07-16 15:41:33
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : kunal_408
+IP        : 10.0.0.2
+------------------------------------------------------------
+Time      : 2026-07-16 15:41:57
+Source    : SERVER
+Event     : LOGOUT
+Username  : kunal_408
+IP        : 10.0.0.2
+------------------------------------------------------------
+Time      : 2026-07-16 15:42:22
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : kunal_408
+IP        : 10.0.0.2
+------------------------------------------------------------
+Time      : 2026-07-16 15:46:01
+Source    : SERVER
+Event     : LOGOUT
+Username  : kunal_408
+IP        : 10.0.0.2
+------------------------------------------------------------
+Time      : 2026-07-16 15:46:52
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : kunal_408
+IP        : 10.0.0.5
+------------------------------------------------------------
+Time      : 2026-07-16 15:49:56
+Source    : SERVER
+Event     : LOGIN SUCCESS
+Username  : deepak_09
+IP        : 10.0.0.6
+------------------------------------------------------------
+Time      : 2026-07-16 15:53:40
+Source    : SERVER
+Event     : LOGOUT
+Username  : deepak_09
+IP        : 10.0.0.6
+------------------------------------------------------------
+Time      : 2026-07-16 15:55:03
+Source    : SERVER
+Event     : DUPLICATE LOGIN BLOCKED
+Username  : kunal_408
+IP        : 10.0.0.6
+------------------------------------------------------------
+Time      : 2026-07-16 15:56:54
+Source    : CLIENT
+Event     : SESSION TIMEOUT
+Username  : kunal_408
+Details   : Logged out due to inactivity
+============================================================
+Time      : 2026-07-16 15:57:04
+Source    : SERVER
+Event     : LOGOUT
+Username  : kunal_408
+IP        : 10.0.0.5
+------------------------------------------------------------

@@ -1,9 +1,32 @@
 import socket
 import threading
+import time
 import tkinter as tk
+import csv
+import hashlib
+import os
+import re
 from datetime import datetime
 from tkinter import messagebox
 from tkinter.scrolledtext import ScrolledText
+
+
+# ============================================
+# User Database
+# ============================================
+
+USERS_FILE = "users.csv"
+
+if not os.path.exists(USERS_FILE):
+
+    with open(USERS_FILE, "w", newline="") as file:
+
+        writer = csv.writer(file)
+
+        writer.writerow([
+            "username",
+            "password_hash"
+        ])
 
 # ============================================
 # GUI LOGIN WINDOW - VERSION 1
@@ -17,8 +40,8 @@ root.resizable(False, False)
 
 
 # Center Window
-window_width = 500
-window_height = 350
+window_width = 560
+window_height = 460
 
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
@@ -34,30 +57,62 @@ root.geometry(f"{window_width}x{window_height}+{x}+{y}")
 # ============================================
 
 username_var = tk.StringVar()
+password_var = tk.StringVar()
+signup_username_var = tk.StringVar()
+signup_password_var = tk.StringVar()
+signup_confirm_var = tk.StringVar()
+signup_strength_var = tk.StringVar(value="")
 server_ip_var = tk.StringVar(value="10.0.0.1")
 PORT = 5000
+MAX_MESSAGE_LENGTH = 500
+SECURITY_LOG_FILE = "security_log.txt"
 client = None
 chat_window = None
 chat_box = None
 message_entry = None
 online_users = None
 status_label = None
-
+failed_attempts = 0
+lockout_until = 0
+MAX_FAILED_ATTEMPTS = 5
+LOCKOUT_DURATION = 30
+SESSION_TIMEOUT = 600
+last_activity_time = time.time()
+timeout_job = None
 # ============================================
 # Functions
 # ============================================
 
 def connect_server():
-
     global client
-
+    global failed_attempts
+    global lockout_until
+    global timeout_job
     username = username_var.get().strip()
+    password = password_var.get()
     server_ip = server_ip_var.get().strip()
+    password_hash = hash_password(password)
 
+    current_time = time.time()
+    if current_time < lockout_until:
+        remaining = int(lockout_until - current_time)
+        messagebox.showerror(
+            "Login Temporarily Locked",
+            f"Too many failed login attempts.\n\nPlease try again in {remaining} seconds."
+        )
+
+        return
     if username == "":
         messagebox.showerror(
             "Error",
             "Username cannot be empty."
+        )
+        return
+
+    if password == "":
+        messagebox.showerror(
+            "Password Required",
+            "Please enter your password."
         )
         return
 
@@ -67,31 +122,76 @@ def connect_server():
             "Server IP cannot be empty."
         )
         return
+# ============================================
+# Authenticate User
+# ============================================
 
+    authenticated = False
+    with open(USERS_FILE, "r", newline="") as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            if (
+                row["username"].lower() == username.lower()
+                and
+                row["password_hash"] == password_hash
+            ):
+                authenticated = True
+                break
+    if not authenticated:
+        failed_attempts += 1
+        if failed_attempts >= MAX_FAILED_ATTEMPTS:
+            lockout_until = time.time() + LOCKOUT_DURATION
+            failed_attempts = 0
+            write_security_log(event="ACCOUNT LOCKED",username=username,details=f"{MAX_FAILED_ATTEMPTS} failed login attempts")
+            messagebox.showerror(
+                "Too Many Login Attempts",
+                f"PLease try again in {LOCKOUT_DURATION} seconds."
+            )
+        else:
+            remaining = MAX_FAILED_ATTEMPTS - failed_attempts
+            write_security_log(event="FAILED LOGIN",username=username,details="Invalid username or password")
+            messagebox.showerror(
+            "Login Failed",
+            f"Invalid username or password.\n\nRemaining attempts: {remaining}"
+            )
+        password_var.set("")
+        password_entry.focus()
+        return
+
+    failed_attempts = 0
     try:
-
-        client = socket.socket(
-            socket.AF_INET,
-            socket.SOCK_STREAM
-        )
-
-        client.connect(
-            (server_ip, PORT)
-        )
-
+        client = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+        client.connect((server_ip, PORT))
         response = client.recv(1024).decode()
 
         if response == "USERNAME":
+            client.send(username.encode())
+            response = client.recv(1024).decode()
 
-            client.send(
-                username.encode()
-            )
+            if response == "DUPLICATE_LOGIN":
+                messagebox.showerror(
+                    "Already Logged In",
+                    "This account is already logged in.\n\nPlease logout first."
+                )
+                username_var.set("")
+                password_var.set("")
+                password_entry.focus()
+                client.close()
+                return
 
-        messagebox.showinfo("Connected", 
+        elif response != "LOGIN_SUCCESS":
+                messagebox.showerror(
+                    "Login Failed",
+                    "Unexpected server response."
+                )
+                client.close()
+                return
+
+
+        messagebox.showinfo("Connected",
         f"Successfully connected to \n {server_ip}:5000" )
-
         root.withdraw()
-
+        update_activity()
         open_chat_window(username)
         threading.Thread(
             target=receive,
@@ -110,11 +210,14 @@ def open_chat_window(username):
     global chat_window
     global chat_box
     global message_entry
-    global online_users 
+    global online_users
     global status_label
 
     chat_window = tk.Toplevel()
-
+    chat_window.protocol(
+        "WM_DELETE_WINDOW",
+        exit_application
+    )
     chat_window.title("SyncChat")
 
     chat_window.geometry("1050x750")
@@ -298,6 +401,7 @@ def open_chat_window(username):
     )
 
     message_entry.bind("<Return>", send_message)
+    message_entry.bind("<Key>",lambda event: update_activity())
     send_btn.pack(side="left",padx=6)
 
     disconnect_btn = tk.Button(
@@ -346,18 +450,73 @@ def add_placeholder(event):
 
         message_entry.config(fg="gray")
 
+def toggle_password():
+
+    if password_entry.cget("show") == "*":
+
+        password_entry.config(show="")
+
+        eye_button.config(text="Hide")
+
+    else:
+
+        password_entry.config(show="*")
+
+        eye_button.config(text="Show")
+
+def update_activity():
+    global last_activity_time
+    last_activity_time = time.time()
+
+def check_session_timeout():
+
+    global last_activity_time
+    global chat_window
+
+    try:
+
+        if chat_window is not None and chat_window.winfo_exists():
+
+            current_time = time.time()
+
+            if current_time - last_activity_time >= SESSION_TIMEOUT:
+                update_activity()      # Prevent repeated popups
+                write_security_log( event="SESSION TIMEOUT",username=username_var.get().strip(),details="Logged out due to inactivity")          
+                messagebox.showwarning(
+                    "Session Expired",
+                    "You have been logged out due to inactivity."
+                )
+
+                exit_application()
+
+    except tk.TclError:
+        pass
+
+    root.after(1000, check_session_timeout)
 
 def send_message(event=None):
 
     global client
     global message_entry
-
     msg = message_entry.get().strip()
     username = username_var.get().strip()
-    if msg == "" or msg == "Enter your message...":
+    # Empty message
+    if msg == "":
+        return
+    # Placeholder text
+    if msg == "Type a message...":
+        return
+# Maximum length check
+    if len(msg) > MAX_MESSAGE_LENGTH:
+        messagebox.showerror(
+            "Message Too Long",
+            f"The Maximum allowed message length is {MAX_MESSAGE_LENGTH} characters."
+        )
+        message_entry.focus()
         return
 
     try:
+        update_activity()
         client.send(msg.encode())
 
         message_entry.delete(0, tk.END)
@@ -366,6 +525,7 @@ def send_message(event=None):
     except Exception as e:
 
         print("Send Error :", e)
+
 
 def receive():
 
@@ -518,17 +678,399 @@ def receive():
             break
 
 
+def hash_password(password):
+
+    return hashlib.sha256(password.encode()).hexdigest()
+
+# ============================================
+# SECURITY LOG
+# ============================================
+
+def write_security_log(event,username="",details=""):
+    with open(SECURITY_LOG_FILE, "a") as file:
+        file.write(
+            f"Time      : {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n"
+        )
+        file.write(
+            "Source    : CLIENT\n"
+        )
+        file.write(
+            f"Event     : {event}\n"
+        )
+        if username:
+            file.write(
+                f"Username  : {username}\n"
+            )
+        if details:
+            file.write(
+                f"Details   : {details}\n"
+            )
+        file.write("=" * 60 + "\n")
+
+def signup_window():
+
+    signup = tk.Toplevel(root)
+    signup.title("Create SyncChat Account")
+    signup.geometry("560x460")
+    signup.resizable(False, False)
+    signup.configure(bg="#f4f6f9")
+    signup.transient(root)
+    signup.grab_set()
+
+    # ----------------------------
+    # Center Window
+    # ----------------------------
+    window_width = 560
+    window_height = 460
+
+    screen_width = signup.winfo_screenwidth()
+    screen_height = signup.winfo_screenheight()
+
+    x = int((screen_width - window_width) / 2) 
+    y = int((screen_height - window_height) / 2)
+
+    signup.geometry(f"{window_width}x{window_height}+{x}+{y}")
+
+
+    def create_account():
+        username = signup_username_var.get().strip()
+        password = signup_password_var.get()
+        confirm_password = signup_confirm_var.get()
+        if username == "":
+             messagebox.showerror("Username Required","Please enter a username.")
+             return
+        if not re.fullmatch(r"[A-Za-z0-9_.]+", username):
+            messagebox.showerror(
+                "Invalid Username",
+                "Username can contain only:\n\n"
+                "• Letters (A-Z, a-z)\n"
+                "• Numbers (0-9)\n"
+                "• Underscore (_)\n"
+                "• Dot (.)"
+            )
+            return
+        if password == "":
+            messagebox.showerror(
+                "Password Required",
+                "Please enter a password."
+            )
+            return
+        if confirm_password == "":
+            messagebox.showerror(
+                "Confirm Password",
+                "Please confirm your password."
+            )
+            return
+        if password != confirm_password:
+            messagebox.showerror(
+                "Password Mismatch",
+                "Password and Confirm Password do not match."
+            )
+            return
+        with open(USERS_FILE, "r", newline="") as file:
+
+            reader = csv.DictReader(file)
+            for row in reader:
+                if row["username"].lower() == username.lower():
+                   messagebox.showerror(
+                       "Username Already Exists",
+                       "This username is already registered.\n\nPlease choose a different username."
+                   )
+                   return
+
+        password_hash = hash_password(password)
+        with open(USERS_FILE, "a", newline="") as file:
+            writer = csv.writer(file)
+            writer.writerow([
+                username,
+                password_hash
+            ])
+        write_security_log(event="ACCOUNT CREATED",username=username)
+        messagebox.showinfo(
+            "Account Created",
+            "Your SyncChat account has been created successfully!"
+        )
+        signup_username_var.set("")
+        signup_password_var.set("")
+        signup_confirm_var.set("")
+        signup_strength_var.set("")
+        signup.destroy()
+    # ----------------------------
+    # Local Toggle Functions
+    # ----------------------------
+
+    def toggle_signup_password():
+
+        if signup_password_entry.cget("show") == "*":
+            signup_password_entry.config(show="")
+            signup_show_btn.config(text="Hide")
+        else:
+            signup_password_entry.config(show="*")
+            signup_show_btn.config(text="Show")
+
+    def toggle_confirm_password():
+
+        if signup_confirm_entry.cget("show") == "*":
+            signup_confirm_entry.config(show="")
+            signup_confirm_show_btn.config(text="Hide")
+        else:
+            signup_confirm_entry.config(show="*")
+            signup_confirm_show_btn.config(text="Show")
+
+    def check_password_strength(event=None):
+
+        password = signup_password_var.get()
+
+        if password == "":
+            signup_strength_var.set("")
+            return
+
+        password = signup_password_var.get()
+
+        score = 0
+
+        if len(password) >= 8:
+            score += 1
+
+        if any(c.isupper() for c in password):
+            score += 1
+
+        if any(c.islower() for c in password):
+            score += 1
+
+        if any(c.isdigit() for c in password):
+            score += 1
+
+        if any(c in "!@#$%^&*()_+-=[]{}|;:',.<>?/`~" for c in password):
+            score += 1
+
+        if score <= 2:
+            signup_strength_var.set("Weak Password")
+            strength_label.config(fg="red")
+
+        elif score == 3 or score == 4:
+            signup_strength_var.set("Medium Password")
+            strength_label.config(fg="orange")
+
+        else:
+            signup_strength_var.set("Strong Password")
+            strength_label.config(fg="green")
+
+
+    # ----------------------------
+    # Heading
+    # ----------------------------
+
+    title = tk.Label(
+        signup,
+        text="Create SyncChat Account",
+        font=("Segoe UI",22,"bold"),
+        fg="navy",
+        bg="#f4f6f9"
+    )
+
+    title.pack(pady=(28,8))
+
+    subtitle = tk.Label(
+        signup,
+        text="Create a new account to access SyncChat",
+        font=("Segoe UI",10),
+        fg="gray40",
+        bg="#f4f6f9"
+    )
+
+    subtitle.pack(pady=(0,28))
+
+    # ----------------------------
+    # Form
+    # ----------------------------
+
+    form = tk.Frame(signup,bg="#f4f6f9")
+    form.pack(pady=10, padx=15)
+
+    # Username
+    tk.Label(
+        form,
+        text="Username :",
+        font=("Segoe UI",10),
+        bg="#f4f6f9"
+    ).grid(row=0,column=0,padx=10,pady=10,sticky="e")
+
+    signup_username_entry = tk.Entry(
+        form,
+        width=34,
+        font=("Segoe UI",10),
+        textvariable=signup_username_var,
+        bg="#fcfcfc",
+        highlightthickness=0
+    )
+
+    signup_username_entry.grid(row=0,column=1,sticky="w")
+
+    # Password
+
+    tk.Label(
+        form,
+        text="Password :",
+        font=("Segoe UI",10),
+        bg="#f4f6f9"
+    ).grid(row=1,column=0,padx=10,pady=10,sticky="e")
+
+    signup_password_entry = tk.Entry(
+        form,
+        width=34,
+        font=("Segoe UI",10),
+        textvariable=signup_password_var,
+        show="*",
+        bg="#fcfcfc",
+        highlightthickness=0
+    )
+
+    signup_password_entry.grid(row=1,column=1,sticky="w")
+    signup_password_entry.bind("<KeyRelease>",check_password_strength)
+    signup_show_btn = tk.Button(
+        form,
+        text="Show",
+        width=4,
+        font=("Segoe UI",9),
+        bg="#f0f0f0",
+        fg="black",
+        activebackground="#d9d9d9",
+        cursor="hand2",
+        command=toggle_signup_password
+    )
+
+    signup_show_btn.grid(row=1,column=2,padx=(8,0))
+
+    strength_label = tk.Label(
+        form,
+        textvariable=signup_strength_var,
+        font=("Segoe UI",9,"bold"),
+        fg="red",
+        bg="#f4f6f9"
+    )
+
+    strength_label.grid(
+        row=2,
+        column=1,
+        sticky="w",
+        padx=(15,0),
+        pady=(3,8)
+    )
+
+    # ============================================
+# Buttons
+# ============================================
+    # Confirm Password
+
+    tk.Label(
+        form,
+        text="Confirm Password :",
+        font=("Segoe UI",10),
+        bg="#f4f6f9"
+    ).grid(row=3,column=0,padx=10,pady=10,sticky="e")
+
+    signup_confirm_entry = tk.Entry(
+        form,
+        width=34,
+        font=("Segoe UI",10),
+        textvariable=signup_confirm_var,
+        show="*",
+        bg="#fcfcfc",
+        highlightthickness=0
+    )
+
+    signup_confirm_entry.grid(row=3,column=1,sticky="w")
+
+    signup_confirm_show_btn = tk.Button(
+        form,
+        text="Show",
+        width=4,
+        font=("Segoe UI",9),
+        bg="#f0f0f0",
+        fg="black",
+        activebackground="#d9d9d9",
+        cursor="hand2",
+        command=toggle_confirm_password
+    )
+
+    signup_confirm_show_btn.grid(row=3,column=2,padx=(8,0))
+    # ============================================
+# Buttons
+# ============================================
+
+    button_frame = tk.Frame(
+        signup,
+        bg="#f4f6f9"
+    )
+
+    button_frame.pack(pady=(15,12))
+    footer = tk.Label(
+        signup,
+        text="SyncChat v2.0 – Secure Edition • © 2026 Kunal Prajapati",
+        font=("Arial",9),
+        fg="gray",
+        bg="#f4f6f9"
+    )
+
+    footer.pack(side="bottom", pady=(8,10))
+
+    create_btn = tk.Button(
+        button_frame,
+        text="Create Account",
+        width=16,
+        font=("Segoe UI",10,"bold"),
+        pady=4,
+        bg="#1565c0",
+        fg="white",
+        activebackground="#0d47a1",
+        activeforeground="white",
+        cursor="hand2",
+        command=create_account
+    )
+
+    create_btn.grid(row=0,column=0,padx=8)
+
+    cancel_btn = tk.Button(
+        button_frame,
+        text="Cancel",
+        width=16,
+        font=("Segoe UI",10,"bold"),
+        pady=4,
+        bg="#e0e0e0",
+        activebackground="#cfcfcf",
+        cursor="hand2",
+        command=signup.destroy
+    )
+
+    cancel_btn.grid(row=0,column=1,padx=8)
+
+    signup_username_entry.focus()
+    signup.bind("<Return>",lambda event: create_account())
+    signup.bind("<Escape>",lambda event: signup.destroy())
+
 def exit_application():
-
     global client
-
+    global chat_window
+    global timeout_job
     try:
         if client:
+            # Tell server we are logging out
+            client.send(b"LOGOUT")
+            client.shutdown(socket.SHUT_RDWR)
             client.close()
     except:
         pass
-
-    root.destroy()
+    # Close chat window
+    if timeout_job:
+        root.after_cancel(timeout_job)
+        timeout_job = None
+    chat_window.destroy()
+    # Show login window again
+    root.deiconify()
+    # Clear login fields
+    password_var.set("")
+    username_entry.focus()
 
 # ============================================
 # Title
@@ -537,20 +1079,20 @@ def exit_application():
 title = tk.Label(
     root,
     text= "SYNCCHAT",
-    font=("Arial", 18, "bold"),
+    font=("Segoe UI",22,"bold"),
     fg="navy"
 )
 
-title.pack(pady=20)
+title.pack(pady=(25,10))
 
 
 subtitle = tk.Label(
     root,
     text="Powered by TCP Socket Programming",
-    font=("Arial", 11)
+    font=("Segoe UI", 10)
 )
 
-subtitle.pack()
+subtitle.pack(pady=(0,20))
 
 # ============================================
 # Login Frame
@@ -558,38 +1100,63 @@ subtitle.pack()
 
 frame = tk.Frame(root)
 
-frame.pack(pady=25)
-
+frame.pack(pady=10)
 
 tk.Label(
     frame,
     text="Username :",
-    font=("Arial", 11)
+    font=("Segoe UI", 10)
 ).grid(row=0, column=0, padx=10, pady=10, sticky="e")
 
 username_entry = tk.Entry(
     frame,
-    width=28,
-    textvariable=username_var
+    width=34,
+    textvariable=username_var,
+    font=("Segoe UI",10)
 )
 
 username_entry.grid(row=0, column=1)
 
 
+tk.Label(
+    frame,
+    text="Password :",
+    font=("Segoe UI", 10)).grid(row=1, column=0, padx=10, pady=10, sticky="e")
+
+password_entry = tk.Entry(
+    frame,
+    width=34,
+    textvariable=password_var,
+    show="*",
+    font=("Segoe UI",10)
+)
+
+password_entry.grid(row=1, column=1)
+
+eye_button = tk.Button(
+    frame,
+    text="Show",
+    width=4,
+    font=("Segoe UI",9),
+    command=toggle_password
+)
+
+eye_button.grid(row=1,column=2,padx=(1,0), sticky="w")
 
 tk.Label(
     frame,
     text="Server IP :",
-    font=("Arial", 11)
-).grid(row=1, column=0, padx=10, pady=10, sticky="e")
+    font=("Segoe UI",10)
+).grid(row=2, column=0, padx=10, pady=10, sticky="e")
 
 server_entry = tk.Entry(
     frame,
-    width=32,
-    textvariable=server_ip_var
+    width=34,
+    textvariable=server_ip_var,
+    font=("Segoe UI",10)
 )
 
-server_entry.grid(row=1, column=1)
+server_entry.grid(row=2, column=1)
 
 
 # ============================================
@@ -603,22 +1170,36 @@ button_frame.pack(pady=35)
 
 connect_button = tk.Button(
     button_frame,
-    text="Connect",
-    width=18,
+    text="Login",
+    width=16,
+    font=("Segoe UI",10,"bold"),
+    pady=4,
+    bg="#1565c0",
+    fg="white",
+    activebackground="#0d47a1",
+    activeforeground="white",
+    cursor="hand2",
     command=connect_server
 )
 
 connect_button.grid(row=0, column=0, padx=10)
 
 
-exit_button = tk.Button(
+signup_button = tk.Button(
     button_frame,
-    text="Exit",
-    width=18,
-    command=exit_application
+    text="Sign Up",
+    width=16,
+    font=("Segoe UI",10,"bold"),
+    pady=4,
+    bg="#2e7d32",
+    fg="white",
+    activebackground="#1b5e20",
+    activeforeground="white",
+    cursor="hand2",
+    command=signup_window
 )
 
-exit_button.grid(row=0, column=1, padx=10)
+signup_button.grid(row=0, column=1, padx=10)
 
 root.bind("<Return>", lambda event: connect_server())
 
@@ -628,7 +1209,7 @@ root.bind("<Return>", lambda event: connect_server())
 
 footer = tk.Label(
     root,
-    text="SyncChat v1.0 • © 2026 Kunal Prajapati",
+    text="SyncChat v2.0 – Secure Edition • © 2026 Kunal Prajapati",
     font=("Arial", 9),
     fg="gray"
 )
@@ -637,5 +1218,5 @@ footer.pack(side="bottom", pady=12)
 
 
 username_entry.focus()
-
+check_session_timeout()
 root.mainloop()

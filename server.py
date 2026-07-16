@@ -1,12 +1,11 @@
+
 import socket
 import threading
 import csv
 import os
 from datetime import datetime
-
 HOST="0.0.0.0"
 PORT=5000
-
 clients={}
 statistics={
     "connected_users":0,
@@ -15,24 +14,16 @@ statistics={
     "private_messages":0,
     "system_messages":0
 }
-
 server=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 server.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
 server.bind((HOST,PORT))
 server.listen()
-
 print("Advanced Chat Server started on port",PORT)
-
-
-
 CHAT_HISTORY_FILE = "chat_history.csv"
 
 if not os.path.exists(CHAT_HISTORY_FILE):
-
     with open(CHAT_HISTORY_FILE, "w", newline="") as file:
-
         writer = csv.writer(file)
-
         writer.writerow([
             "Timestamp",
             "Type",
@@ -40,37 +31,60 @@ if not os.path.exists(CHAT_HISTORY_FILE):
             "Receiver",
             "Message"
         ])
+SECURITY_LOG_FILE = "security_log.txt"
+
+if not os.path.exists(SECURITY_LOG_FILE):
+    with open(SECURITY_LOG_FILE, "w") as file:
+        file.write("=" * 60 + "\n")
+        file.write("SYNCCHAT SECURITY LOG\n")
+        file.write("=" * 60 + "\n\n")
 
 def save_history(message_type,
                  sender,
                  receiver,
                  message):
-
     with open(CHAT_HISTORY_FILE,
               "a",
               newline="") as file:
-
         writer = csv.writer(file)
-
         writer.writerow([
-
             datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-
             message_type,
-
             sender,
-
             receiver,
-
             message
-
         ])
-        
 
 def write_log(event,user="",detail=""):
     with open("chat_log.txt","a") as f:
         t=datetime.now().strftime("%H:%M:%S")
         f.write(f"{t},{event},{user},{detail}\n")
+
+# ==========================================================
+# SECURITY LOG
+# ==========================================================
+
+def write_security_log(event,
+                       username="",
+                       ip="",
+                       details=""):
+
+    with open(SECURITY_LOG_FILE, "a") as file:
+
+        file.write(f"Time      : {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+        file.write("Source    : SERVER\n")
+        file.write(f"Event     : {event}\n")
+
+        if username:
+            file.write(f"Username  : {username}\n")
+
+        if ip:
+            file.write(f"IP        : {ip}\n")
+
+        if details:
+            file.write(f"Details   : {details}\n")
+
+        file.write("-" * 60 + "\n")
 
 def stats():
     statistics["connected_users"]=len(clients)
@@ -102,17 +116,12 @@ def find_user(name):
         if u.lower()==name.lower():
             return u
     return None
-
 # ==========================================================
 # SEND UPDATED ONLINE USERS TO EVERY CLIENT
 # ==========================================================
-
 def update_online_users():
-
     users = ",".join(clients.keys())
-
     message = "USERS:" + users
-
     for user in list(clients.values()):
         try:
             user["socket"].send(message.encode())
@@ -217,8 +226,9 @@ def remove(sock):
             victim=u
             break
     if victim:
-        del clients[victim]
         write_log("DISCONNECTED",victim)
+        write_security_log(event="LOGOUT",username=victim, ip=d["ip"])
+        del clients[victim]
         save_history("SYSTEM","SERVER","ALL",f"{victim} left the chat")
         broadcast(f"*** {victim} left the chat ***",system=True)
         stats()
@@ -231,7 +241,9 @@ def handle(sock,user):
             if not text:
                 remove(sock)
                 break
-
+            if text == "LOGOUT":
+                remove(sock)
+                break
             if text.startswith("/"):
                 if text.startswith("/msg "):
                     p=text.split(" ",2)
@@ -267,7 +279,18 @@ while True:
     sock,addr=server.accept()
     sock.send(b"USERNAME")
     user=sock.recv(1024).decode().strip()
-    clients[user]={"socket":sock,"ip":addr[0],"port":addr[1],"login_time": datetime.now().strftime("%H:%M:%S"), "status": "Online"}
+# ============================================
+# Prevent Duplicate Login
+# ============================================
+    if find_user(user):
+       write_security_log(event="DUPLICATE LOGIN BLOCKED",username=user,ip=addr[0])
+       sock.send(b"DUPLICATE_LOGIN")
+       sock.close()
+       continue
+
+    sock.send(b"LOGIN_SUCCESS")
+    clients[user]={"socket":sock,"ip":addr[0],"port":addr[1],"login_time":datetime.now().strftime("%H:%M:%S"),"status":"Online"}
+    write_security_log(event="LOGIN SUCCESS",username=user,ip=addr[0])
     write_log("CONNECTED",user,addr[0])
     save_history("SYSTEM", "SERVER" , "ALL" ,f"{user} joined the chat")
     broadcast(f"*** {user} joined the chat ***",exclude=user,system=True)
