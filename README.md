@@ -1,4 +1,4 @@
-# 🚀 SyncChat v2.0 - Secure Multi-Client TCP Chat Application
+#  SyncChat v2.0 - Secure Multi-Client TCP Chat Application
 
 <p align="center">
   <b>GUI-Based Secure Multi-Client TCP Chat Application</b><br>
@@ -7,7 +7,7 @@
 
 ---
 
-## 📌 Project Overview
+##  Project Overview
 
 **SyncChat v2.0** is a secure GUI-based Multi-Client TCP Chat Application developed as part of the **ISEA Phase-III Cyber Security Internship (Tezpur University)**.
 
@@ -17,7 +17,7 @@ The project was developed and tested inside a Mininet virtual network and valida
 
 ---
 
-# ✨ Features
+#  Features
 
 ## Communication Features
 
@@ -62,7 +62,7 @@ The project was developed and tested inside a Mininet virtual network and valida
 
 ---
 
-# 🛠 Technologies Used
+# Technologies Used
 
 - Python 3
 - TCP Socket Programming
@@ -77,7 +77,7 @@ The project was developed and tested inside a Mininet virtual network and valida
 
 ---
 
-# 📂 Project Structure
+#  Project Structure
 
 ```
 SyncChat/
@@ -106,7 +106,7 @@ SyncChat/
 
 ---
 
-# ⚙ Installation
+# Installation
 
 Clone the repository
 
@@ -122,7 +122,7 @@ cd ISEA-Phase3-TezpurUniversity-SyncChat
 
 ---
 
-# ▶ Running the Application
+#  Running the Application
 
 ## Step 1
 
@@ -168,7 +168,7 @@ Login using your registered credentials.
 
 ---
 
-# 💬 Supported Commands
+#  Supported Commands
 
 | Command | Description |
 |----------|-------------|
@@ -181,7 +181,7 @@ Login using your registered credentials.
 
 ---
 
-# 📸 Screenshots Included
+#  Screenshots Included
 
 The repository contains screenshots demonstrating:
 
@@ -208,7 +208,7 @@ The repository contains screenshots demonstrating:
 
 ---
 
-# 📡 Wireshark Packet Analysis
+#  Wireshark Packet Analysis
 
 The application traffic was verified using Wireshark by monitoring TCP communication on **Port 5000**.
 
@@ -223,7 +223,7 @@ Captured operations include:
 
 ---
 
-# 🔒 Security Mechanisms
+#  Security Mechanisms
 
 Implemented security controls include:
 
@@ -241,7 +241,7 @@ Implemented security controls include:
 
 ---
 
-# 🎯 Learning Outcomes
+#  Learning Outcomes
 
 This project provided practical experience in:
 
@@ -258,7 +258,7 @@ This project provided practical experience in:
 
 ---
 
-# 📖 Internship Information
+#  Internship Information
 
 **Program:** Information Security Education and Awareness (ISEA) Phase-III
 
@@ -268,7 +268,7 @@ This project provided practical experience in:
 
 ---
 
-# 👨‍💻 Author
+# 💻 Author
 
 **Kunal Prajapati**
 
@@ -282,6 +282,6 @@ GitHub: https://github.com/kunalll0
 
 ---
 
-# 📜 License
+#  License
 
 This project is released under the **MIT License**.
