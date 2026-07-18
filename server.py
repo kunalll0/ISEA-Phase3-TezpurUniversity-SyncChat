@@ -1,11 +1,16 @@
-
 import socket
 import threading
 import csv
 import os
+import json
 from datetime import datetime
-HOST="0.0.0.0"
-PORT=5000
+
+with open("config.json", "r") as config_file:
+    config = json.load(config_file)
+
+HOST = config["server"]["host"]
+PORT = config["server"]["port"]
+BUFFER_SIZE = config["server"]["buffer_size"]
 clients={}
 statistics={
     "connected_users":0,
@@ -19,7 +24,7 @@ server.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
 server.bind((HOST,PORT))
 server.listen()
 print("Advanced Chat Server started on port",PORT)
-CHAT_HISTORY_FILE = "chat_history.csv"
+CHAT_HISTORY_FILE = config["files"]["chat_history"]
 
 if not os.path.exists(CHAT_HISTORY_FILE):
     with open(CHAT_HISTORY_FILE, "w", newline="") as file:
@@ -31,7 +36,7 @@ if not os.path.exists(CHAT_HISTORY_FILE):
             "Receiver",
             "Message"
         ])
-SECURITY_LOG_FILE = "security_log.txt"
+SECURITY_LOG_FILE = config["files"]["security_log"]
 
 if not os.path.exists(SECURITY_LOG_FILE):
     with open(SECURITY_LOG_FILE, "w") as file:
@@ -55,8 +60,8 @@ def save_history(message_type,
             message
         ])
 
-def write_log(event,user="",detail=""):
-    with open("chat_log.txt","a") as f:
+def write_log(event, user="", detail=""):
+    with open(config["files"]["chat_log"], "a") as f:
         t=datetime.now().strftime("%H:%M:%S")
         f.write(f"{t},{event},{user},{detail}\n")
 
@@ -237,7 +242,7 @@ def remove(sock):
 def handle(sock,user):
     while True:
         try:
-            text=sock.recv(1024).decode()
+            text=sock.recv(BUFFER_SIZE).decode()
             if not text:
                 remove(sock)
                 break
@@ -278,7 +283,7 @@ def handle(sock,user):
 while True:
     sock,addr=server.accept()
     sock.send(b"USERNAME")
-    user=sock.recv(1024).decode().strip()
+    user=sock.recv(BUFFER_SIZE).decode().strip()
 # ============================================
 # Prevent Duplicate Login
 # ============================================

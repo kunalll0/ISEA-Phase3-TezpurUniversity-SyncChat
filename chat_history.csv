@@ -482,3 +482,9 @@ Timestamp,Type,Sender,Receiver,Message
 2026-07-16 15:50:58,PRIVATE,deepak_09,kunal_408,hello bhaiji ky haal hai
 2026-07-16 15:53:40,SYSTEM,SERVER,ALL,deepak_09 left the chat
 2026-07-16 15:57:04,SYSTEM,SERVER,ALL,kunal_408 left the chat
+2026-07-18 20:52:20,SYSTEM,SERVER,ALL,kunal_408 joined the chat
+2026-07-18 20:52:37,SYSTEM,SERVER,ALL,karan_90 joined the chat
+2026-07-18 20:52:44,BROADCAST,karan_90,ALL,hiii
+2026-07-18 20:52:58,PRIVATE,kunal_408,karan_90,hii
+2026-07-18 20:53:49,SYSTEM,SERVER,ALL,karan_90 left the chat
+2026-07-18 20:53:57,SYSTEM,SERVER,ALL,kunal_408 left the chat

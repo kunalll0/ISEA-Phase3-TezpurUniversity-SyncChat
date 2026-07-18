@@ -1,0 +1,27 @@
+{
+    "server": {
+        "host": "0.0.0.0",
+        "port": 5000,
+        "buffer_size": 1024,
+        "max_clients": 20
+    },
+
+    "client": {
+        "default_server_ip": "10.0.0.1",
+        "buffer_size": 4096
+    },
+
+    "security": {
+        "session_timeout": 60,
+        "max_failed_attempts": 5,
+        "lockout_duration": 30,
+        "max_message_length": 500
+    },
+
+    "files": {
+        "users": "users.csv",
+        "chat_history": "chat_history.csv",
+        "security_log": "security_log.txt",
+        "chat_log": "chat_log.txt"
+    }
+}

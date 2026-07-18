@@ -6,17 +6,17 @@ import csv
 import hashlib
 import os
 import re
+import json
 from datetime import datetime
 from tkinter import messagebox
 from tkinter.scrolledtext import ScrolledText
 
 
-# ============================================
-# User Database
-# ============================================
+with open("config.json", "r") as config_file:
+    config = json.load(config_file)
 
-USERS_FILE = "users.csv"
 
+USERS_FILE = config["files"]["users"]
 if not os.path.exists(USERS_FILE):
 
     with open(USERS_FILE, "w", newline="") as file:
@@ -62,10 +62,11 @@ signup_username_var = tk.StringVar()
 signup_password_var = tk.StringVar()
 signup_confirm_var = tk.StringVar()
 signup_strength_var = tk.StringVar(value="")
-server_ip_var = tk.StringVar(value="10.0.0.1")
-PORT = 5000
-MAX_MESSAGE_LENGTH = 500
-SECURITY_LOG_FILE = "security_log.txt"
+server_ip_var = tk.StringVar(value=config["client"]["default_server_ip"])
+PORT = config["server"]["port"]
+MAX_MESSAGE_LENGTH = config["security"]["max_message_length"]
+SECURITY_LOG_FILE = config["files"]["security_log"]
+CLIENT_BUFFER_SIZE = config["client"]["buffer_size"]
 client = None
 chat_window = None
 chat_box = None
@@ -74,9 +75,9 @@ online_users = None
 status_label = None
 failed_attempts = 0
 lockout_until = 0
-MAX_FAILED_ATTEMPTS = 5
-LOCKOUT_DURATION = 30
-SESSION_TIMEOUT = 600
+MAX_FAILED_ATTEMPTS = config["security"]["max_failed_attempts"]
+LOCKOUT_DURATION = config["security"]["lockout_duration"]
+SESSION_TIMEOUT = config["security"]["session_timeout"]
 last_activity_time = time.time()
 timeout_job = None
 # ============================================
@@ -538,7 +539,7 @@ def receive():
 
         try:
 
-            msg = client.recv(4096).decode()
+            msg = client.recv(CLIENT_BUFFER_SIZE).decode()
             if msg.startswith("USERS:"):
 
                 users = msg.replace("USERS:", "").split(",")
