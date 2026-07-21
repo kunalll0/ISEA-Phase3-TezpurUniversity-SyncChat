@@ -488,3 +488,45 @@ Timestamp,Type,Sender,Receiver,Message
 2026-07-18 20:52:58,PRIVATE,kunal_408,karan_90,hii
 2026-07-18 20:53:49,SYSTEM,SERVER,ALL,karan_90 left the chat
 2026-07-18 20:53:57,SYSTEM,SERVER,ALL,kunal_408 left the chat
+2026-07-18 21:18:06,SYSTEM,SERVER,ALL,kunal_408 joined the chat
+2026-07-18 21:25:35,SYSTEM,SERVER,ALL,kunal_408 joined the chat
+2026-07-18 21:26:01,BROADCAST,kunal_408,ALL,hiiii
+2026-07-18 21:26:09,SYSTEM,SERVER,ALL,karan_90 joined the chat
+2026-07-18 21:26:36,SYSTEM,SERVER,ALL,kunal_408 left the chat
+2026-07-18 21:26:46,SYSTEM,SERVER,ALL,kunal_408 joined the chat
+2026-07-18 21:27:12,SYSTEM,SERVER,ALL,karan_90 left the chat
+2026-07-18 21:27:23,SYSTEM,SERVER,ALL,karan_90 joined the chat
+2026-07-18 21:27:37,SYSTEM,SERVER,ALL,karan_90 left the chat
+2026-07-18 21:27:44,SYSTEM,SERVER,ALL,karan_90 joined the chat
+2026-07-18 21:27:47,SYSTEM,SERVER,ALL,karan_90 left the chat
+2026-07-18 21:27:52,SYSTEM,SERVER,ALL,kunal_408 left the chat
+2026-07-18 21:35:25,SYSTEM,SERVER,ALL,kunal_408 joined the chat
+2026-07-18 21:35:32,BROADCAST,kunal_408,ALL,hello ji
+2026-07-18 21:35:35,SYSTEM,SERVER,ALL,kunal_408 left the chat
+2026-07-18 21:35:42,SYSTEM,SERVER,ALL,kunal_408 joined the chat
+2026-07-18 21:35:57,SYSTEM,SERVER,ALL,kunal_408 left the chat
+2026-07-19 20:51:49,SYSTEM,SERVER,ALL,kunal_408 joined the chat
+2026-07-19 20:51:53,SYSTEM,SERVER,ALL,kunal_408 left the chat
+2026-07-19 20:52:04,SYSTEM,SERVER,ALL,kunal_408 joined the chat
+2026-07-19 20:52:14,SYSTEM,SERVER,ALL,kunal_408 left the chat
+2026-07-20 15:07:42,SYSTEM,SERVER,ALL,kunal_408 joined the chat
+2026-07-20 15:08:09,SYSTEM,SERVER,ALL,karan_90 joined the chat
+2026-07-20 15:08:13,BROADCAST,karan_90,ALL,hiii
+2026-07-20 15:08:22,BROADCAST,kunal_408,ALL,hello
+2026-07-20 15:08:25,SYSTEM,SERVER,ALL,kunal_408 left the chat
+2026-07-20 15:09:03,SYSTEM,SERVER,ALL,karan_90 left the chat
+2026-07-20 15:09:47,SYSTEM,SERVER,ALL,kunal_408 joined the chat
+2026-07-20 15:09:50,SYSTEM,SERVER,ALL,kunal_408 left the chat
+2026-07-21 11:48:24,SYSTEM,SERVER,ALL,karan_90 joined the chat
+2026-07-21 11:48:30,SYSTEM,SERVER,ALL,kunal_408 joined the chat
+2026-07-21 11:48:37,BROADCAST,kunal_408,ALL,hello
+2026-07-21 11:48:47,BROADCAST,karan_90,ALL,hello ji
+2026-07-21 12:19:16,SYSTEM,SERVER,ALL,kunal_408 joined the chat
+2026-07-21 12:19:42,SYSTEM,SERVER,ALL,karan_90 joined the chat
+2026-07-21 12:19:48,BROADCAST,kunal_408,ALL,hello
+2026-07-21 12:19:52,BROADCAST,karan_90,ALL,hello
+2026-07-21 12:21:28,SYSTEM,SERVER,ALL,kunal_408 joined the chat
+2026-07-21 12:54:55,SYSTEM,SERVER,ALL,kunal_408 joined the chat
+2026-07-21 12:55:29,SYSTEM,SERVER,ALL,kunal_408 joined the chat
+2026-07-21 13:27:05,SYSTEM,SERVER,ALL,kunal_408 joined the chat
+2026-07-21 13:43:51,SYSTEM,SERVER,ALL,karan_90 joined the chat

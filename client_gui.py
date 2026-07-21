@@ -80,6 +80,8 @@ LOCKOUT_DURATION = config["security"]["lockout_duration"]
 SESSION_TIMEOUT = config["security"]["session_timeout"]
 last_activity_time = time.time()
 timeout_job = None
+LAST_SERVER_IP = None
+LAST_SERVER_PORT = None
 # ============================================
 # Functions
 # ============================================
@@ -89,6 +91,8 @@ def connect_server():
     global failed_attempts
     global lockout_until
     global timeout_job
+    global LAST_SERVER_IP
+    global LAST_SERVER_PORT
     username = username_var.get().strip()
     password = password_var.get()
     server_ip = server_ip_var.get().strip()
@@ -165,6 +169,14 @@ def connect_server():
         client.connect((server_ip, PORT))
         response = client.recv(1024).decode()
 
+        if response == "SERVER_FULL":
+            messagebox.showerror(
+                "Server Full",
+                "The server has reached the maximum number of connected clients.\n\nPlease try again later."
+            )
+            client.close()
+            return
+
         if response == "USERNAME":
             client.send(username.encode())
             response = client.recv(1024).decode()
@@ -188,9 +200,10 @@ def connect_server():
                 client.close()
                 return
 
-
+        LAST_SERVER_IP = server_ip
+        LAST_SERVER_PORT = PORT
         messagebox.showinfo("Connected",
-        f"Successfully connected to \n {server_ip}:5000" )
+        f"Successfully connected to \n {server_ip}:{PORT}" )
         root.withdraw()
         update_activity()
         open_chat_window(username)
@@ -540,6 +553,33 @@ def receive():
         try:
 
             msg = client.recv(CLIENT_BUFFER_SIZE).decode()
+            if msg == "SERVER_SHUTDOWN":
+
+                if status_label:
+                    status_label.config(
+                        text="🔴 Server Offline",
+                        fg="red"
+                    )
+
+                messagebox.showwarning(
+                    "Server Shutdown",
+                    "The server has been shut down.\n\nYou have been disconnected."
+                )
+
+                try:
+                    client.close()
+                except:
+                    pass
+
+                if chat_window:
+                    chat_window.destroy()
+
+                root.deiconify()
+
+                password_var.set("")
+                username_entry.focus()
+
+                return
             if msg.startswith("USERS:"):
 
                 users = msg.replace("USERS:", "").split(",")
@@ -612,72 +652,132 @@ def receive():
             elif msg.startswith("[PRIVATE to"):
 
                 receiver = msg.split("]")[0].replace("[PRIVATE to", "").strip()
-
                 text = msg.split("]", 1)[1].strip()
-
                 chat_box.insert(
                     "end",
                     f"PRIVATE → {receiver}  |  {current_time}\n",
                     "private"
                 )
-
                 chat_box.insert(
                     "end",
                     text + "\n\n",
                     "message"
                 )
-
 # -------------------------------
 # NORMAL CHAT MESSAGE
 # -------------------------------
-
             elif msg.startswith("["):
-
                 sender = msg.split("]")[0].replace("[", "").strip()
-
                 text = msg.split("]", 1)[1].strip()
                 display_name = sender
                 if sender == username_var.get().strip():
                     display_name = "You"
-
                 chat_box.insert(
                     "end",
                     f"{display_name}  |  {current_time}\n",
                     "normal"
                 )
-
                 chat_box.insert(
                     "end",
                      text + "\n\n",
                     "message"
                 )
-
 # -------------------------------
 # OTHER OUTPUT
 # -------------------------------
-
             else:
-
                 chat_box.insert(
                     "end",
                     msg + "\n\n"
                 )
-
             chat_box.see("end")
-
             chat_box.config(state="disabled")
+        except (ConnectionResetError,
+                ConnectionAbortedError,
+                BrokenPipeError,
+                OSError) as e:
 
-        except Exception as e:
+            print("Network Error :", e)
 
-            print("Receive Error :", e)
             if status_label:
                 status_label.config(
-                    text="Status : Disconnected",
-                    fg="red"
+                    text="🟠 Reconnecting...",
+                    fg="orange"
                 )
-            client.close()
+
+            try:
+                client.close()
+            except:
+                pass
+
+            if attempt_reconnect():
+
+                messagebox.showinfo(
+                    "Server Available",
+                    "The server is available again.\n\nPlease login again."
+                )
+
+            else:
+
+                messagebox.showerror(
+                    "Reconnect Failed",
+                    "Unable to reconnect to the server."
+                )
+
+            root.after(0, exit_application)
+            break
+        except Exception as e:
+            print("Unexpected Receive Error :", e)
+            try:
+                client.close()
+            except:
+                pass
+
             break
 
+def attempt_reconnect():
+
+    global LAST_SERVER_IP
+    global LAST_SERVER_PORT
+
+    if status_label:
+        status_label.config(
+            text="🟠 Reconnecting...",
+            fg="orange"
+        )
+
+    for attempt in range(1, 6):
+
+        print(f"Reconnect attempt {attempt}/5")
+
+        try:
+
+            temp_socket = socket.socket(
+                socket.AF_INET,
+                socket.SOCK_STREAM
+            )
+
+            temp_socket.settimeout(3)
+
+            temp_socket.connect(
+                (LAST_SERVER_IP, LAST_SERVER_PORT)
+            )
+
+            response = temp_socket.recv(
+                CLIENT_BUFFER_SIZE
+            ).decode()
+
+            temp_socket.close()
+
+            if response == "USERNAME":
+
+                return True
+
+        except Exception:
+
+            time.sleep(3)
+
+    return False
 
 def hash_password(password):
 

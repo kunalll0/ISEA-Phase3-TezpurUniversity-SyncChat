@@ -23,6 +23,7 @@ server=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 server.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
 server.bind((HOST,PORT))
 server.listen()
+server.settimeout(1)
 print("Advanced Chat Server started on port",PORT)
 CHAT_HISTORY_FILE = config["files"]["chat_history"]
 
@@ -226,13 +227,24 @@ def private_message(sender,target,msg):
 
 def remove(sock):
     victim=None
+    victim_data= None
     for u,d in clients.items():
         if d["socket"]==sock:
             victim=u
+            victim_data=d
             break
     if victim:
         write_log("DISCONNECTED",victim)
-        write_security_log(event="LOGOUT",username=victim, ip=d["ip"])
+        write_security_log(event="LOGOUT",username=victim, ip=victim_data["ip"])
+        try:
+            sock.shutdown(socket.SHUT_RDWR)
+        except OSError:
+            pass
+
+        try:
+            sock.close()
+        except OSError:
+            pass
         del clients[victim]
         save_history("SYSTEM","SERVER","ALL",f"{victim} left the chat")
         broadcast(f"*** {victim} left the chat ***",system=True)
@@ -275,13 +287,56 @@ def handle(sock,user):
             broadcast(f"[{user}] {text}")
             stats()
 
-        except Exception as e :
-            print(f"Handle Error : {e}")
+        except (ConnectionResetError, ConnectionAbortedError, BrokenPipeError):
+            print(f"{user} disconnected unexpectedly.")
             remove(sock)
             break
 
+        except Exception as e:
+            print(f"Unexpected Handle Error: {e}")
+            remove(sock)
+            break
 while True:
-    sock,addr=server.accept()
+    try:
+        sock, addr = server.accept()
+
+    except socket.timeout:
+        continue
+
+    except KeyboardInterrupt:
+
+        print("\nServer shutting down...")
+
+        # Notify all connected clients
+        for data in list(clients.values()):
+            try:
+                data["socket"].send(
+                    b"SERVER_SHUTDOWN"
+                )
+            except:
+                pass
+
+        # Close all client sockets
+        for data in list(clients.values()):
+            try:
+                data["socket"].shutdown(socket.SHUT_RDWR)
+            except OSError:
+                pass
+
+            try:
+                data["socket"].close()
+            except OSError:
+                pass
+
+        server.close()
+        break
+    # ============================================
+    # Maximum Client Limit
+    # ============================================
+    if len(clients) >= config["server"]["max_clients"]:
+        sock.send(b"SERVER_FULL")
+        sock.close()
+        continue
     sock.send(b"USERNAME")
     user=sock.recv(BUFFER_SIZE).decode().strip()
 # ============================================
