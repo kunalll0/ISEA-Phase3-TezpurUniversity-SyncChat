@@ -1,120 +1,138 @@
-#  SyncChat v2.0 - Secure Multi-Client TCP Chat Application
+# SyncChat
 
-<p align="center">
-  <b>GUI-Based Secure Multi-Client TCP Chat Application</b><br>
-  Developed using Python Socket Programming, Tkinter, Mininet & Wireshark
-</p>
+A GUI-based Multi-Client TCP Chat Application built with Python Socket Programming featuring user authentication, real-time messaging, performance optimization, scalability evaluation, and network traffic analysis.
 
 ---
 
-##  Project Overview
+## Overview
 
-**SyncChat v2.0** is a secure GUI-based Multi-Client TCP Chat Application developed as part of the **ISEA Phase-III Cyber Security Internship (Tezpur University)**.
+SyncChat is a desktop-based client-server chat application developed using Python. It enables multiple authenticated users to communicate over a TCP network through an intuitive graphical interface while providing real-time messaging, user management, and reliable communication.
 
-The application enables multiple users to communicate simultaneously over a TCP network while incorporating authentication, secure account management, duplicate login prevention, activity timeout, chat history logging, security logging, and real-time GUI updates.
+The project combines concepts from computer networks, socket programming, cybersecurity, operating systems, and software engineering into a single application. Beyond implementing a multi-client chat system, the latest version focuses on improving application reliability, optimizing performance, evaluating scalability, and simplifying deployment through centralized configuration management.
 
-The project was developed and tested inside a Mininet virtual network and validated using Wireshark packet analysis.
+The application was developed and tested using Mininet for network emulation and Wireshark for packet inspection, with performance benchmarking carried out under multiple client workloads.
 
 ---
 
-#  Features
+# Features
 
-## Communication Features
+## Communication
 
-- Multi-client TCP socket communication
+- Multi-client TCP communication
 - Real-time broadcast messaging
 - Private messaging using `/msg`
-- Live online users panel
+- Live online user management
 - User join and leave notifications
-- Server statistics monitoring
+- Built-in server commands
 - Multi-threaded client handling
 
 ---
 
-## GUI Features
+## User Management
 
-- Modern Tkinter GUI
-- Secure Login Window
-- User Registration Window
-- Responsive Chat Interface
-- Online Users Panel
-- Status Indicator
-- Password Show/Hide functionality
-- Password Strength Indicator
-- Session Timeout Warning Dialogs
+- User registration
+- Login authentication
+- Duplicate username prevention
+- Duplicate login prevention
+- Password strength validation
+- Login attempt restriction
+- Temporary account lockout
+- Automatic session timeout
 
 ---
 
-## Security Features
+## Reliability
 
-- User Authentication
-- SHA-256 Password Hashing
-- Secure User Registration
-- Duplicate Login Prevention
-- Login Attempt Limiter
-- Temporary Account Lockout
-- Session Timeout (Automatic Logout)
-- Security Event Logging
-- Chat History Logging
-- Username Validation
-- Password Validation
-- Maximum Message Length Validation
+- Graceful client disconnection
+- Improved exception handling
+- Automatic session cleanup
+- Stable multi-threaded communication
+- Continuous server availability
+- Connection monitoring
+
+---
+
+## Performance & Scalability
+
+- Centralized configuration management
+- Automated benchmark testing
+- Scalability evaluation
+- Throughput measurement
+- Average message delay analysis
+- CPU usage monitoring
+- Memory usage monitoring
+- Performance report generation
+- Automatic graph generation
+
+---
+
+## Network Analysis
+
+- Mininet virtual network testing
+- Wireshark packet analysis
+- TCP connection verification
+- Multi-client traffic analysis
 
 ---
 
 # Technologies Used
 
-- Python 3
-- TCP Socket Programming
-- Tkinter
-- Threading
-- CSV
-- SHA-256 Hashing
-- Mininet
-- Wireshark
-- Ubuntu (WSL)
-- Linux Networking
+| Technology | Purpose |
+|------------|---------|
+| Python 3 | Programming Language |
+| Socket | TCP Communication |
+| Tkinter | GUI Development |
+| Threading | Multi-client Support |
+| Hashlib | Password Hashing |
+| CSV | Data Storage |
+| JSON | Configuration Management |
+| Mininet | Network Emulation |
+| Wireshark | Packet Analysis |
+| Matplotlib | Performance Visualization |
 
 ---
 
-#  Project Structure
+# Project Structure
 
-```
+```text
 SyncChat/
 │
 ├── client_gui.py
 ├── server.py
+├── performance_test.py
+├── config.json
 ├── users.csv
 ├── chat_history.csv
 ├── security_log.txt
+├── performance_results.csv
+│
+├── graphs/
+│   ├── cpu.png
+│   ├── delay.png
+│   ├── memory.png
+│   └── throughput.png
+│
+├── Screenshots/
+│
+├── Reports/
+│   ├── Assignment8_Report.docx
+│   └── Assignment8_Report.pdf
+│
 ├── README.md
-├── LICENSE
-│
-├── Report/
-│   ├── Assignment7_Report.docx
-│   └── Assignment7_Report.pdf
-│
-└── Screenshots/
-    ├── Login Window
-    ├── Signup Window
-    ├── Chat Interface
-    ├── Wireshark Captures
-    ├── Security Logs
-    ├── Chat History
-    └── Server Statistics
+└── LICENSE
 ```
 
 ---
 
-# Installation
+# Getting Started
 
-Clone the repository
+Clone the repository.
 
 ```bash
 git clone https://github.com/kunalll0/ISEA-Phase3-TezpurUniversity-SyncChat.git
 ```
 
-Go inside the project
+Move into the project directory.
 
 ```bash
 cd ISEA-Phase3-TezpurUniversity-SyncChat
@@ -122,166 +140,188 @@ cd ISEA-Phase3-TezpurUniversity-SyncChat
 
 ---
 
-#  Running the Application
+# Running the Application
 
-## Step 1
-
-Start Mininet
-
-```bash
-sudo mn --topo single,5
-```
-
----
-
-## Step 2
-
-Run the Server
+Start the server.
 
 ```bash
 python3 server.py
 ```
 
----
-
-## Step 3
-
-Launch Client GUI
+Launch one or more client instances.
 
 ```bash
 python3 client_gui.py
 ```
 
----
-
-## Step 4
-
-Connect using the Server IP
-
-Example
-
-```
-10.0.0.1
-```
-
-Login using your registered credentials.
+Log in using registered credentials and begin chatting.
 
 ---
 
-#  Supported Commands
+# Performance Benchmark
+
+Run the benchmark tool.
+
+```bash
+python3 performance_test.py
+```
+
+The benchmark evaluates the application using:
+
+- 5 Clients
+- 8 Clients
+- 10 Clients
+
+The following metrics are recorded:
+
+- Average Message Delay
+- Throughput
+- CPU Usage
+- Memory Usage
+
+Benchmark results are saved in:
+
+```text
+performance_results.csv
+```
+
+Performance graphs are generated inside:
+
+```text
+graphs/
+```
+
+---
+
+# Configuration
+
+All application settings are managed through:
+
+```text
+config.json
+```
+
+The configuration file allows modification of:
+
+- Server IP Address
+- Port Number
+- Buffer Size
+- Maximum Client Limit
+- Session Timeout
+- Login Attempt Limit
+- Maximum Message Length
+
+No source code modifications are required when changing deployment settings.
+
+---
+
+# Available Commands
 
 | Command | Description |
-|----------|-------------|
-| Normal Message | Broadcast to all users |
-| `/msg username message` | Private Messaging |
-| `/list` | Display Online Users |
-| `/info` | Server Information |
-| `/history` | Recent Chat History |
-| `/help` | Available Commands |
+|---------|-------------|
+| Normal Message | Send a broadcast message |
+| `/msg username message` | Send a private message |
+| `/list` | Display online users |
+| `/info` | Display server statistics |
+| `/history` | View recent chat history |
+| `/help` | Display all available commands |
 
 ---
 
-#  Screenshots Included
+# Performance Evaluation
 
-The repository contains screenshots demonstrating:
+The latest version introduces performance benchmarking and scalability testing to evaluate application behavior under increasing workloads.
 
-- Login Window
-- User Registration
-- Password Validation
-- Duplicate Login Prevention
-- Login Attempt Lockout
-- Session Timeout
-- Successful Login
-- Chat Window
-- Broadcast Messaging
-- Private Messaging
-- Online Users Panel
-- Help Command
-- Server Information
-- Chat History
-- User Disconnection
-- Server Console
-- Chat History Log
-- Security Log
-- User Database
-- Wireshark TCP Analysis
+Performance evaluation includes:
+
+- Multi-client benchmark execution
+- Resource utilization monitoring
+- Throughput analysis
+- Message delay measurement
+- Scalability testing
+- Performance graph generation
 
 ---
 
-#  Wireshark Packet Analysis
+# Packet Analysis
 
-The application traffic was verified using Wireshark by monitoring TCP communication on **Port 5000**.
+Network communication was verified using Wireshark.
 
 Captured operations include:
 
 - TCP Three-Way Handshake
-- Broadcast Message Transmission
-- Private Message Transmission
-- TCP ACK Packets
-- User Logout
-- TCP FIN Termination
+- User Authentication
+- Broadcast Messaging
+- Private Messaging
+- User Connection
+- User Disconnection
+- TCP Connection Termination
 
 ---
 
-#  Security Mechanisms
+# Screenshots
 
-Implemented security controls include:
+The repository contains screenshots demonstrating:
 
-- Password Hashing (SHA-256)
-- Secure User Authentication
-- Duplicate Login Detection
-- Login Attempt Restriction
-- Temporary Account Lockout
-- Automatic Session Timeout
-- Security Event Logging
-- Chat History Logging
-- Username Validation
-- Password Strength Validation
-- Message Length Validation
-
----
-
-#  Learning Outcomes
-
-This project provided practical experience in:
-
-- Client-Server Architecture
-- TCP Socket Programming
-- Multi-threaded Network Applications
-- GUI Development using Tkinter
-- Authentication Mechanisms
-- Password Hashing
-- Secure Programming Practices
-- Mininet Network Emulation
-- Wireshark Packet Analysis
-- Network Security Fundamentals
+- User Registration
+- Login Interface
+- Chat Window
+- Broadcast Messaging
+- Private Messaging
+- Online User Management
+- Session Timeout
+- Configuration Management
+- Benchmark Execution
+- Performance Results
+- Wireshark Analysis
+- Performance Graphs
 
 ---
 
-#  Internship Information
+# Future Scope
 
-**Program:** Information Security Education and Awareness (ISEA) Phase-III
+Possible future enhancements include:
 
-**University:** Tezpur University
-
-**Project:** Assignment 7 - Secure GUI-Based Multi-Client TCP Chat Application
+- TLS/SSL Communication
+- End-to-End Encryption
+- Database Integration
+- Cloud Deployment
+- Load Balancing
+- Asynchronous Networking
+- Mobile Application
+- File Sharing
+- Voice Communication
+- Video Communication
 
 ---
 
-# 💻 Author
+# About the Project
+
+This project was developed during the Information Security Education and Awareness (ISEA) Phase-III Summer Internship under the Ministry of Electronics and Information Technology (MeitY) in affiliation with Tezpur University.
+
+The project demonstrates practical implementation of:
+
+- Python Programming
+- Socket Programming
+- Computer Networks
+- GUI Development
+- Authentication
+- Performance Optimization
+- Scalability
+- Distributed Systems
+
+---
+
+# Author
 
 **Kunal Prajapati**
 
-BCA (Cyber Security)
-
-ISEA Phase-III Cyber Security Internship
-
-Tezpur University
+Bachelor of Computer Applications (Cyber Security)
 
 GitHub: https://github.com/kunalll0
 
 ---
 
-#  License
+# License
 
-This project is released under the **MIT License**.
+This project is licensed under the MIT License.
